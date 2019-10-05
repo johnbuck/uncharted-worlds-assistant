@@ -5,22 +5,7 @@ const Airtable = require('airtable');
 exports.handler = function(event, context, callback) {
     //pull the required information from your environment variables, which can be set in the Netlify UI
     const {API_URL, API_CLIENT_ID, API_KEY} = process.env;
-
-    // Return mock
-    if (!process.env.API_KEY) {
-        // eslint-disable-next-line no-console
-        console.log('No key: MOCK RESPONSE')
-        const response = {
-            statusCode: 200,
-            body: JSON.stringify(mockdata),
-            headers: {
-                'content-type': 'application/json',
-                'cache-control': 'Cache-Control: max-age=60, public'
-            }
-        }
-    return callback(null, response)
-    }
-
+    
     // Configure Airtable Base Connection
     Airtable.configure({
         endpointUrl: API_URL,
