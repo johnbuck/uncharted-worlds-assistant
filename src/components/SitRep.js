@@ -10,7 +10,7 @@ class SitRep extends Component {
         <div style={{ marginTop: 20, padding: 30 }}>
           <List container dense={true} justify="center">
             {this.props.records.map(record => (
-                <ListItem item key={record.key}>
+                <ListItem item key={record.id}>
                   <ListItemText>
                     <Typography gutterBottom variant="h5" component="h2">
                       {record.key}
