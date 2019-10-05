@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { List, ListItem, ListItemText, ListItemIcon, IconButton, ListItemSecondaryAction} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -12,16 +12,12 @@ function SitRep(props) {
         <List container dense={true} justify="center">
           {records.map(record => (
               <ListItem item key={records.recordKey}>
-                <Card>
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {record.recordKey}
-                      </Typography>
-                      <Typography component="p">{record.value}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
+                <ListItemText>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {record.recordKey}
+                </Typography>
+                <Typography component="p">{record.value}</Typography>
+                </ListItemText>
               </ListItem>
           ))}
         </List>
