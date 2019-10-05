@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      records: [],
+      apiResponse: [],
     };
   }
 
@@ -20,13 +20,18 @@ class App extends Component {
     fetch('/.netlify/functions/getAllRecords/getAllRecords.js')
         .then((resp) => resp.json())
         .then(data => {
-          this.setState({ records: data.records });
+          this.setState({ apiResponse: data.records });
         }).catch(err => {
       // Error :(
     });
   }
 
   render() {
+
+    let starship = this.state.apiResponse.filter(t=>t.type === 'Starship');
+    let setting = this.state.apiResponse.filter(t=>t.type === 'Setting');
+    let location = this.state.apiResponse.filter(t=>t.type === 'Location');
+
     return (
         <div className="App">
           <AppBar color="primary" position="static">
@@ -39,12 +44,13 @@ class App extends Component {
 
           <Grid container>
             <Grid item xs={6}>
-              <SitRep records={this.state.records}/>
+              <SitRep data={starship}/>
             </Grid>
             <Grid item xs={6}>
-              <SitRep records={this.state.records}/>
+              <SitRep data={setting}/>
+              <SitRep data={location}/>
             </Grid>
-          </Grid>
+        </Grid>
         </div>
     );
   }
