@@ -8,8 +8,8 @@ class SitRep extends Component {
   render () {
     return (
         <div style={{ marginTop: 20, padding: 30 }}>
-          <List container dense={true} justify="center">
-            {this.props.records.map(record => (
+          <List>
+            {this.props.data.map(record => (
                 <ListItem item key={record.id}>
                   <ListItemText>
                     <Typography gutterBottom variant="h5" component="h2">
