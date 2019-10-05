@@ -20,7 +20,7 @@ exports.handler = function(event, context, callback) {
   // Query
   const apiQuery = {
     maxRecords: 100,
-    view: 'allData',
+    view: 'settingData',
     pageSize: 50,
     // sort: [{field: 'Publish Date', direction: 'desc'}]
   }
