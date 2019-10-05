@@ -31,9 +31,7 @@ class App extends Component {
         <div className="App">
           <AppBar color="primary" position="static">
             <Toolbar>
-              <TypoGraphy variant="title"
-                          color="inherit"
-              >
+              <TypoGraphy variant="title" color="inherit">
                 Uncharted Worlds Assistant
               </TypoGraphy>
             </Toolbar>
