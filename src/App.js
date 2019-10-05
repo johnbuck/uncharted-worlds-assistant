@@ -6,6 +6,24 @@ import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      records: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/.netlify/functions/getAllRecords/getAllRecords.js')
+        .then((resp) => resp.json())
+        .then(data => {
+          this.setState({ records: data.records });
+        }).catch(err => {
+      // Error :(
+    });
+  }
+
   render() {
     return (
         <div className="App">
@@ -18,7 +36,7 @@ class App extends Component {
               </TypoGraphy>
             </Toolbar>
           </AppBar>
-          <SitRep spacing={40} />
+          <SitRep records={this.state.records}/>
         </div>
     );
   }
