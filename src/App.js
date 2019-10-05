@@ -1,9 +1,11 @@
 import React,  { Component } from 'react'
+import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 //import NavBar from './components/NavBar'
 import SitRep from './components/SitRep'
 import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography'
+
 
 class App extends Component {
 
@@ -36,7 +38,15 @@ class App extends Component {
               </TypoGraphy>
             </Toolbar>
           </AppBar>
-          <SitRep records={this.state.records}/>
+
+          <Grid container>
+            <Grid item xs={6}>
+              <SitRep records={this.state.records}/>
+            </Grid>
+            <Grid item xs={6}>
+              <SitRep records={this.state.records}/>
+            </Grid>
+          </Grid>
         </div>
     );
   }
