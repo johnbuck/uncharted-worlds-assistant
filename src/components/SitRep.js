@@ -1,11 +1,35 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
+import { List, ListItem, ListItemText, ListItemIcon, IconButton, ListItemSecondaryAction} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+
+
+function SitRep(props) {
+  return (
+      <div style={{ marginTop: 20, padding: 30 }}>
+        <List container dense={true} justify="center">
+          {records.map(record => (
+              <ListItem item key={records.recordKey}>
+                <Card>
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {record.recordKey}
+                      </Typography>
+                      <Typography component="p">{record.value}</Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </ListItem>
+          ))}
+        </List>
+      </div>
+  );
+}
+
+export default SitRep;
 
 const records = [
   {
@@ -206,36 +230,3 @@ const records = [
     id: 'rec1v4RtP9U2hnVQw'
   }
 ];
-
-function SitRep(props) {
-  return (
-      <div style={{ marginTop: 20, padding: 30 }}>
-        <Grid container spacing={40} justify="center">
-          {records.map(record => (
-              <Grid item key={records.recordKey}>
-                <Card>
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {record.recordKey}
-                      </Typography>
-                      <Typography component="p">{record.value}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-      {/*            <CardActions>*/}
-      {/*              <Button size="small" color="primary">*/}
-      {/*                Share*/}
-      {/*              </Button>*/}
-      {/*              <Button size="small" color="primary">*/}
-      {/*                Learn More*/}
-      {/*              </Button>*/}
-      {/*            </CardActions>*/}
-                </Card>
-              </Grid>
-          ))}
-        </Grid>
-      </div>
-  );
-}
-
-export default SitRep;
