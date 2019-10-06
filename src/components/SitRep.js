@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import { List, ListItem, ListItemText, ListItemIcon, IconButton, ListItemSecondaryAction} from "@material-ui/core";
+
+import { List, ListItem, ListItemText} from "@material-ui/core";
 
 
 class SitRep extends Component {
@@ -8,15 +8,14 @@ class SitRep extends Component {
   render () {
     return (
         <div style={{ marginTop: 20, padding: 30 }}>
+          <h2>{this.props.title}</h2>
           <List>
             {this.props.data.map(record => (
-                <ListItem item key={record.id}>
-                  <ListItemText>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {record.key}
-                    </Typography>
-                    <Typography component="p">{record.value}</Typography>
-                  </ListItemText>
+                <ListItem button key={this.props.id}>
+                  <ListItemText
+                    primary={record.value}
+                    secondary={record.key}
+                  />
                 </ListItem>
             ))}
           </List>

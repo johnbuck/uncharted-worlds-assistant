@@ -1,11 +1,8 @@
 import React,  { Component } from 'react'
-import Grid from '@material-ui/core/Grid'
+//import { ThemeProvider } from '@material-ui/styles';
+import { Container, Grid, Toolbar, Typography } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
-//import NavBar from './components/NavBar'
 import SitRep from './components/SitRep'
-import Toolbar from '@material-ui/core/Toolbar'
-import TypoGraphy from '@material-ui/core/Typography'
-
 
 class App extends Component {
 
@@ -27,7 +24,6 @@ class App extends Component {
   }
 
   render() {
-
     let starship = this.state.apiResponse.filter(t=>t.type === 'Starship');
     let setting = this.state.apiResponse.filter(t=>t.type === 'Setting');
     let location = this.state.apiResponse.filter(t=>t.type === 'Location');
@@ -36,22 +32,24 @@ class App extends Component {
         <div className="App">
           <AppBar color="primary" position="static">
             <Toolbar>
-              <TypoGraphy variant="title" color="inherit">
+              <Typography variant="title" color="inherit">
                 Uncharted Worlds Assistant
-              </TypoGraphy>
+              </Typography>
             </Toolbar>
           </AppBar>
 
-          <Grid container>
-            <Grid item xs={6}>
-              <SitRep data={starship}/>
+          <Container maxWidth="md">
+            <Grid container justify="center">
+              <Grid item xs={6}>
+                <SitRep title="Starship Status" data={starship}/>
+              </Grid>
+              <Grid item xs={6}>
+                <SitRep title="Setting" data={setting}/>
+                <SitRep title="Relevant Local Info" data={location}/>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <SitRep data={setting}/>
-              <SitRep data={location}/>
-            </Grid>
-        </Grid>
-        </div>
+          </Container>
+          </div>
     );
   }
 }
